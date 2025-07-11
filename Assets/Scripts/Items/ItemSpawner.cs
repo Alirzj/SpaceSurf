@@ -8,71 +8,68 @@ public class ItemSpawner : MonoBehaviour
     public GameObject[] collectablePrefabs;
 
     [Header("Shared Spawn Points")]
-    public Transform[] spawnPoints; // 5 total, used by both obstacles and collectables
+    public Transform[] spawnPoints;
 
-    [Header("Obstacle Spawn Timing (seconds)")]
-    public float minObstacleInterval = 3f;
-    public float maxObstacleInterval = 6f;
+    [Header("Timing Settings")]
+    public float initialDelay = 10f;
 
-    [Header("Collectable Spawn Timing (seconds)")]
-    public float minCollectableInterval = 8f;
-    public float maxCollectableInterval = 15f;
+    [Header("Obstacle Timing")]
+    public float minObstacleDelay = 3f;
+    public float maxObstacleDelay = 6f;
+
+    [Header("Collectable Timing")]
+    public float minCollectableDelay = 8f;
+    public float maxCollectableDelay = 15f;
 
     void Start()
     {
-        // Start the two separate spawn loops
         StartCoroutine(ObstacleSpawnLoop());
         StartCoroutine(CollectableSpawnLoop());
     }
 
     IEnumerator ObstacleSpawnLoop()
     {
-        yield return new WaitForSeconds(Random.Range(minObstacleInterval, maxObstacleInterval)); // Initial delay
+        yield return new WaitForSeconds(initialDelay);
 
         while (true)
         {
-            SpawnObstacleSet(); // Spawn one obstacle set
-            float waitTime = Random.Range(minObstacleInterval, maxObstacleInterval);
-            yield return new WaitForSeconds(waitTime); // Wait before spawning next set
+            int index = Random.Range(0, spawnPoints.Length);
+            float delay = Random.Range(minObstacleDelay, maxObstacleDelay);
+
+            yield return new WaitForSeconds(delay);
+            SpawnObstacle(index);
         }
     }
 
     IEnumerator CollectableSpawnLoop()
     {
-        yield return new WaitForSeconds(Random.Range(minCollectableInterval, maxCollectableInterval)); // Initial delay
+        yield return new WaitForSeconds(initialDelay);
 
         while (true)
         {
-            SpawnCollectable(); // Spawn one collectable
-            float waitTime = Random.Range(minCollectableInterval, maxCollectableInterval);
-            yield return new WaitForSeconds(waitTime); // Wait before next collectable
+            int index = Random.Range(0, spawnPoints.Length);
+            float delay = Random.Range(minCollectableDelay, maxCollectableDelay);
+
+            yield return new WaitForSeconds(delay);
+            SpawnCollectable(index);
         }
     }
 
-    void SpawnObstacleSet()
+    void SpawnObstacle(int spawnIndex)
     {
-        if (obstaclePrefabs.Length == 0 || spawnPoints.Length < 2)
+        if (obstaclePrefabs.Length == 0 || spawnPoints.Length == 0)
             return;
 
-        int safeIndex = Random.Range(0, spawnPoints.Length); // One lane is left empty for fairness
-
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            if (i == safeIndex)
-                continue;
-
-            GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-            Instantiate(prefab, spawnPoints[i].position, Quaternion.identity);
-        }
+        GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        Instantiate(prefab, spawnPoints[spawnIndex].position, Quaternion.identity);
     }
 
-    void SpawnCollectable()
+    void SpawnCollectable(int spawnIndex)
     {
         if (collectablePrefabs.Length == 0 || spawnPoints.Length == 0)
             return;
 
-        int index = Random.Range(0, spawnPoints.Length);
         GameObject prefab = collectablePrefabs[Random.Range(0, collectablePrefabs.Length)];
-        Instantiate(prefab, spawnPoints[index].position, Quaternion.identity);
+        Instantiate(prefab, spawnPoints[spawnIndex].position, Quaternion.identity);
     }
 }
