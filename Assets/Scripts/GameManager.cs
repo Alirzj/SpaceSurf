@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public float slowDownDuration = 3f;
     public float targetTimeScale = 0f;
 
+    [Header("Upgrade Values")]
+    public float speedIncreaseAmount = 0.2f;
+    public float durationIncreaseAmount = 2f;
+
     [System.Serializable]
     public class UpgradeDefinition
     {
@@ -27,16 +31,18 @@ public class GameManager : MonoBehaviour
     {
         IncreaseSpeed,
         FullHeal,
-        AmuneToSimpleMeteor,
+        ImmunityToSimpleMeteor,
         IncreaseShieldDuration,
         IncreaseMagnetDuration,
         IncreaseLaserDuration,
-        // Add more upgrades here
+        IncreaseSpeedBoostDuration
     }
 
     [Header("Upgrade Mappings")]
     public List<UpgradeDefinition> upgradeDefinitions = new List<UpgradeDefinition>();
     private Dictionary<Sprite, UpgradeType> spriteToUpgradeMap = new Dictionary<Sprite, UpgradeType>();
+
+    private PlayerPowerUpController playerController;
 
     void Awake()
     {
@@ -44,6 +50,19 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+    }
+
+    void Start()
+    {
+        playerController = FindFirstObjectByType<PlayerPowerUpController>();
+
+        // Initialize upgrade mappings
+        spriteToUpgradeMap.Clear();
+        foreach (var def in upgradeDefinitions)
+        {
+            if (!spriteToUpgradeMap.ContainsKey(def.upgradeSprite))
+                spriteToUpgradeMap.Add(def.upgradeSprite, def.upgradeType);
+        }
     }
 
     public void TriggerUpgradeChoice()
@@ -74,14 +93,6 @@ public class GameManager : MonoBehaviour
     {
         if (upgradePanel != null)
             upgradePanel.SetActive(true);
-
-        // Create the mapping dictionary
-        spriteToUpgradeMap.Clear();
-        foreach (var def in upgradeDefinitions)
-        {
-            if (!spriteToUpgradeMap.ContainsKey(def.upgradeSprite))
-                spriteToUpgradeMap.Add(def.upgradeSprite, def.upgradeType);
-        }
 
         // Shuffle sprite array and pick 3
         List<Sprite> shuffled = new List<Sprite>(upgradeCardSprites);
@@ -120,26 +131,45 @@ public class GameManager : MonoBehaviour
 
     void ApplyUpgrade(UpgradeType type)
     {
+        if (playerController == null) return;
+
         switch (type)
         {
             case UpgradeType.IncreaseSpeed:
-                Debug.Log("Upgrade: Speed increased!");
+                playerController.UpgradeBaseSpeed(speedIncreaseAmount);
+                Debug.Log($"Upgrade: Base speed increased by {speedIncreaseAmount}!");
                 break;
+
             case UpgradeType.FullHeal:
-                Debug.Log("Upgrade: Full Health activated!");
+                playerController.FullHeal();
+                Debug.Log("Upgrade: Full Health restored!");
                 break;
-            case UpgradeType.AmuneToSimpleMeteor:
-                Debug.Log("Upgrade: Amune To Simple Meteor!");
+
+            case UpgradeType.ImmunityToSimpleMeteor:
+                // This would require additional implementation in the collision system
+                Debug.Log("Upgrade: Immunity to simple meteors activated!");
                 break;
+
             case UpgradeType.IncreaseShieldDuration:
-                Debug.Log("Upgrade: Increase Shield Duration!");
+                playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.Shield, durationIncreaseAmount);
+                Debug.Log($"Upgrade: Shield duration increased by {durationIncreaseAmount} seconds!");
                 break;
+
             case UpgradeType.IncreaseMagnetDuration:
-                Debug.Log("Upgrade: Increase Magnet Duration!");
+                playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.Magnet, durationIncreaseAmount);
+                Debug.Log($"Upgrade: Magnet duration increased by {durationIncreaseAmount} seconds!");
                 break;
+
             case UpgradeType.IncreaseLaserDuration:
-                Debug.Log("Upgrade: Increase Laser Duration!");
+                playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.EagleStrategem, durationIncreaseAmount);
+                Debug.Log($"Upgrade: Laser duration increased by {durationIncreaseAmount} seconds!");
                 break;
+
+            case UpgradeType.IncreaseSpeedBoostDuration:
+                playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.SpeedBoost, durationIncreaseAmount);
+                Debug.Log($"Upgrade: Speed boost duration increased by {durationIncreaseAmount} seconds!");
+                break;
+
             default:
                 Debug.LogWarning("Unknown upgrade selected.");
                 break;

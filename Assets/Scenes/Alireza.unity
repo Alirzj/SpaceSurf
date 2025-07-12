@@ -249,6 +249,8 @@ MonoBehaviour:
   - {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   slowDownDuration: 2
   targetTimeScale: 0
+  speedIncreaseAmount: 0.2
+  durationIncreaseAmount: 2
   upgradeDefinitions:
   - upgradeSprite: {fileID: -360588795, guid: ba7967fdcea571744b95d427d92c2eb1, type: 3}
     upgradeType: 0
@@ -266,6 +268,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2551434168196752513, guid: 0da442763de7be4488d8a475f95c3f3f, type: 3}
+      propertyPath: powerUpType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8380099905282230168, guid: 0da442763de7be4488d8a475f95c3f3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.362674
@@ -631,6 +637,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142796526}
   m_CullTransparentMesh: 1
+--- !u!1 &165478801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165478803}
+  - component: {fileID: 165478802}
+  m_Layer: 0
+  m_Name: PowerUpTester\
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &165478802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165478801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150a52f35dc931e4abefb43af14596f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPowerUpController: {fileID: 580094693}
+--- !u!4 &165478803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165478801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.551506, y: -23.83356, z: 65.87808}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188250978
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,12 +1025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftButton: {fileID: 1210400499}
   rightButton: {fileID: 1598594251}
-  toggleButton: {fileID: 1732021203}
   controlsCanvas: {fileID: 1402095714}
-  buttonSize: 80
-  buttonSpacing: 20
-  bottomOffset: 100
-  toggleButtonSize: 100
 --- !u!4 &309517235
 Transform:
   m_ObjectHideFlags: 0
@@ -2110,22 +2156,31 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   baseSpeed: 5
-  speedBoostMultiplier: 2
-  baseDamage: 10
-  damageBoostMultiplier: 2
-  speedEffect: {fileID: 913267323}
-  boostedSimSpeed: 15
-  defaultSimSpeed: 6
+  baseSpeedMultiplier: 1
   distanceCounterText: {fileID: 1200177148}
-  playerTransform: {fileID: 580094691}
-  sweeperClearPrefab: {fileID: 4648469882272059625, guid: 9c3cd652597fe1741be0439548d2c2e4, type: 3}
-  sweeperShieldPrefab: {fileID: 7817093902610637513, guid: 2bda581d47771904880a961db8113013, type: 3}
-  sweeperMagnetPrefab: {fileID: 3534731599938723935, guid: 4485b6899dfa4a64fab9bcc0fd7c91f5, type: 3}
-  shieldPrefab: {fileID: 2809988948705299939, guid: 435564fac4f2fb240ae03950ba7478ed, type: 3}
-  sweeperClearSpawnPoint: {fileID: 1423419411}
-  sweeperShieldSpawnPoint: {fileID: 403439414}
-  sweeperMagnetSpawnPoint: {fileID: 1360650952}
-  shieldSpawnPoint: {fileID: 671296277}
+  biggieDuration: 5
+  oguDuration: 5
+  shieldDuration: 5
+  speedDuration: 5
+  speedBoostMultiplier: 2
+  magnetRange: 15
+  magnetSpeed: 10
+  coinFadeSpeed: 2
+  biggiePrefab: {fileID: 4648469882272059625, guid: 9c3cd652597fe1741be0439548d2c2e4, type: 3}
+  oguPrefab: {fileID: 3534731599938723935, guid: 4485b6899dfa4a64fab9bcc0fd7c91f5, type: 3}
+  shieldPrefab: {fileID: 7817093902610637513, guid: 2bda581d47771904880a961db8113013, type: 3}
+  speedPrefab: {fileID: 0}
+  shieldEffectPrefab: {fileID: 2809988948705299939, guid: 435564fac4f2fb240ae03950ba7478ed, type: 3}
+  shieldEffectOffset: {x: 0, y: -0.5, z: 0}
+  biggieSpawnPoint: {fileID: 1519274830}
+  oguSpawnPoint: {fileID: 1519274830}
+  shieldSpawnPoint: {fileID: 799215387}
+  speedSpawnPoint: {fileID: 1519274830}
+  laserWidth: 10
+  laserLength: 20
+  speedParticles: {fileID: 913267323}
+  boostedParticleSpeed: 18
+  defaultParticleSpeed: 8
 --- !u!1 &609818065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2783,6 +2838,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 916895236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &799215386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799215387}
+  m_Layer: 0
+  m_Name: spawn shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &799215387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799215386}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &807124548
 GameObject:
@@ -5360,6 +5446,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1519274829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519274830}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1519274830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519274829}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1579402325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7174,3 +7291,6 @@ SceneRoots:
   - {fileID: 2133927819}
   - {fileID: 580094691}
   - {fileID: 59496757}
+  - {fileID: 165478803}
+  - {fileID: 1519274830}
+  - {fileID: 799215387}

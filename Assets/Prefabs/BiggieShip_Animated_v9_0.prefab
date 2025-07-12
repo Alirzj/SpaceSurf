@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2304156104897408757}
   - component: {fileID: 3375369165834559412}
   - component: {fileID: 4385314430301980629}
-  - component: {fileID: 873986862217366036}
   m_Layer: 0
   m_Name: BiggieShip_Animated_v9_0
   m_TagString: Untagged
@@ -111,17 +110,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &873986862217366036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648469882272059625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64a79eeff5a609a459e61ede14f73202, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  lifetime: 3
