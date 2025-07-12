@@ -347,7 +347,6 @@ public class PlayerController : MonoBehaviour
         if (currentControlType == ControlType.Arrows)
         {
             leftPressed = true;
-            Debug.Log("Left arrow pressed");
         }
     }
 
@@ -356,7 +355,6 @@ public class PlayerController : MonoBehaviour
         if (currentControlType == ControlType.Arrows)
         {
             rightPressed = true;
-            Debug.Log("Right arrow pressed");
         }
     }
 
@@ -366,7 +364,6 @@ public class PlayerController : MonoBehaviour
         {
             leftPressed = false;
             rightPressed = false;
-            Debug.Log("Arrow released");
         }
     }
 

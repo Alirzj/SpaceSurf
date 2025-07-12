@@ -1,9 +1,17 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPowerUpController : MonoBehaviour
 {
+    [Header("Health UI")]
+    public Image[] heartImages; // Assign 3 heart UI Images in the inspector
+    public Sprite fullHeartSprite;
+    public Sprite brokenHeartSprite;
+    public int maxHealth = 3;
+    public int currentHealth;
+
     public float baseSpeed = 5f;
     public float speedBoostMultiplier = 2f;
     public float baseDamage = 10f;
@@ -26,9 +34,6 @@ public class PlayerPowerUpController : MonoBehaviour
     private bool isMagnetActive = false;
     private float magnetSpeed = 10f; // how fast coins move to player
 
-    public int maxHealth = 3;
-    public int currentHealth;
-
     private bool isShieldActive = false;
 
     public GameObject sweeperClearPrefab;
@@ -48,6 +53,7 @@ public class PlayerPowerUpController : MonoBehaviour
     {
         ResetStats();
         currentHealth = maxHealth;
+        UpdateHealthUI();
     }
 
     private void Update()
@@ -91,14 +97,23 @@ public class PlayerPowerUpController : MonoBehaviour
         switch (type)
         {
             case PowerUp.PowerUpType.SpeedBoost:
-                currentSpeed = activate ? baseSpeed * speedBoostMultiplier : baseSpeed;
-
+                if (activate)
+                {
+                    MoveToZ.globalSpeed = 80f; // Your custom boost speed
+                }
+                else
+                {
+                    MoveToZ.globalSpeed = 40f; // Reset to default value
+                }
                 if (speedEffect != null)
                 {
                     var main = speedEffect.main;
                     main.simulationSpeed = activate ? boostedSimSpeed : defaultSimSpeed;
                 }
+
                 break;
+
+
             case PowerUp.PowerUpType.EagleStrategem: // ClearObstacles
                 if (activate)
                 {
@@ -171,11 +186,51 @@ public class PlayerPowerUpController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle1"))
         {
             if (!isShieldActive)
             {
                 currentHealth--;
+                UpdateHealthUI();
+                Debug.Log("Player hit! Health: " + currentHealth);
+
+                if (currentHealth <= 0)
+                    Die();
+            }
+            else
+            {
+                Debug.Log("Shield protected the player!");
+            }
+
+            // Destroy the obstacle
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Obstacle2"))
+        {
+            if (!isShieldActive)
+            {
+                currentHealth -= 2;
+                UpdateHealthUI();
+                Debug.Log("Player hit! Health: " + currentHealth);
+
+                if (currentHealth <= 0)
+                    Die();
+            }
+            else
+            {
+                Debug.Log("Shield protected the player!");
+            }
+
+            // Destroy the obstacle
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Obstacle3"))
+        {
+            if (!isShieldActive)
+            {
+                currentHealth -= 3;
+                UpdateHealthUI();
+
                 Debug.Log("Player hit! Health: " + currentHealth);
 
                 if (currentHealth <= 0)
@@ -206,6 +261,16 @@ public class PlayerPowerUpController : MonoBehaviour
         Instantiate(sweeperPrefab, spawnPos, Quaternion.identity);
     }
 
+    private void UpdateHealthUI()
+    {
+        for (int i = 0; i < heartImages.Length; i++)
+        {
+            if (i < currentHealth)
+                heartImages[i].sprite = fullHeartSprite;
+            else
+                heartImages[i].sprite = brokenHeartSprite;
+        }
+    }
 
 
     private void ResetStats()

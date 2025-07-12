@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         IncreaseSpeed,
         FullHeal,
-        AmuneToFire,
+        AmuneToSimpleMeteor,
         IncreaseShieldDuration,
         IncreaseMagnetDuration,
         IncreaseLaserDuration,
@@ -36,9 +36,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Upgrade Mappings")]
     public List<UpgradeDefinition> upgradeDefinitions = new List<UpgradeDefinition>();
-
     private Dictionary<Sprite, UpgradeType> spriteToUpgradeMap = new Dictionary<Sprite, UpgradeType>();
-
 
     void Awake()
     {
@@ -99,25 +97,23 @@ public class GameManager : MonoBehaviour
             // Set the image
             Image img = btn.GetComponent<Image>();
             if (img != null)
-            {
                 img.sprite = assignedSprite;
-            }
 
             // Remove old listeners
             btn.onClick.RemoveAllListeners();
 
-            // Assign logic
+            // Assign upgrade logic
             if (spriteToUpgradeMap.ContainsKey(assignedSprite))
             {
                 UpgradeType upgradeType = spriteToUpgradeMap[assignedSprite];
                 btn.onClick.AddListener(() => ApplyUpgrade(upgradeType));
             }
 
-            // Optional: Close panel after selection
+            // Close panel and resume game gradually
             btn.onClick.AddListener(() =>
             {
                 upgradePanel.SetActive(false);
-                ResumeGameAfterUpgrade();
+                StartCoroutine(GraduallyResumeGame());
             });
         }
     }
@@ -128,27 +124,21 @@ public class GameManager : MonoBehaviour
         {
             case UpgradeType.IncreaseSpeed:
                 Debug.Log("Upgrade: Speed increased!");
-                // TODO: Apply speed logic
                 break;
             case UpgradeType.FullHeal:
                 Debug.Log("Upgrade: Full Health activated!");
-                // TODO: Add shield
                 break;
-            case UpgradeType.AmuneToFire:
-                Debug.Log("Upgrade: Amune To Fire!");
-                // TODO: Heal player
+            case UpgradeType.AmuneToSimpleMeteor:
+                Debug.Log("Upgrade: Amune To Simple Meteor!");
                 break;
             case UpgradeType.IncreaseShieldDuration:
                 Debug.Log("Upgrade: Increase Shield Duration!");
-                // TODO: Heal player
                 break;
             case UpgradeType.IncreaseMagnetDuration:
                 Debug.Log("Upgrade: Increase Magnet Duration!");
-                // TODO: Heal player
                 break;
             case UpgradeType.IncreaseLaserDuration:
-                Debug.Log("Upgrade: Increase Magnet Duration!");
-                // TODO: Heal player
+                Debug.Log("Upgrade: Increase Laser Duration!");
                 break;
             default:
                 Debug.LogWarning("Unknown upgrade selected.");
@@ -156,6 +146,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator GraduallyResumeGame()
+    {
+        float elapsed = 0f;
+        float resumeDuration = slowDownDuration;
+        float startScale = 0f;
+        float endScale = 1f;
+
+        while (elapsed < resumeDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Lerp(startScale, endScale, elapsed / resumeDuration);
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            yield return null;
+        }
+
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+    }
 
     void ShuffleList<T>(List<T> list)
     {
@@ -167,16 +175,4 @@ public class GameManager : MonoBehaviour
             list[rand] = temp;
         }
     }
-    void ResumeGameAfterUpgrade()
-    {
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
-
-        if (upgradePanel != null)
-            upgradePanel.SetActive(false);
-
-        Debug.Log("Game resumed after upgrade.");
-    }
-
 }
-

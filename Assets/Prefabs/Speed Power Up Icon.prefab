@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 291551141220341289}
   - component: {fileID: 7967115317654098611}
   - component: {fileID: 2551434168196752513}
+  - component: {fileID: -718109123566775082}
   m_Layer: 0
   m_Name: Speed Power Up Icon
   m_TagString: Untagged
@@ -123,3 +124,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpType: 0
   duration: 10
+--- !u!114 &-718109123566775082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759272918223369206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d976f034bb5a74d46bfc6fdd23a5486b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 40

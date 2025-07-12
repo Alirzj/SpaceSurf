@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Obstacle
   - Coin
+  - Obstacle1
+  - Obstacle2
+  - Obstacle3
   layers:
   - Default
   - TransparentFX
