@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject upgradePanel;
     public Button[] upgradeButtons; // 3 card buttons
     public Sprite[] upgradeCardSprites; // Sprites to assign randomly
+    public Transform[] cardSlots = new Transform[3]; // Assign the 3 spawn points in inspector
 
     [Header("Slowdown Settings")]
     public float slowDownDuration = 3f;
@@ -20,18 +21,19 @@ public class GameManager : MonoBehaviour
     public float speedIncreaseAmount = 0.2f;
     public float durationIncreaseAmount = 2f;
 
+
     [System.Serializable]
     public class UpgradeDefinition
     {
-        public Sprite upgradeSprite;
+        public GameObject upgradePrefab; // Prefab that includes visuals + button
         public UpgradeType upgradeType;
     }
+
 
     public enum UpgradeType
     {
         IncreaseSpeed,
         FullHeal,
-        ImmunityToSimpleMeteor,
         IncreaseShieldDuration,
         IncreaseMagnetDuration,
         IncreaseLaserDuration,
@@ -54,16 +56,21 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        playerController = FindFirstObjectByType<PlayerPowerUpController>();
+        // Ensure time scale is normal on start
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
 
-        // Initialize upgrade mappings
-        spriteToUpgradeMap.Clear();
-        foreach (var def in upgradeDefinitions)
-        {
-            if (!spriteToUpgradeMap.ContainsKey(def.upgradeSprite))
-                spriteToUpgradeMap.Add(def.upgradeSprite, def.upgradeType);
-        }
+        // Hide upgrade panel if it's shown in editor
+        if (upgradePanel != null)
+            upgradePanel.SetActive(false);
+
+        // Optional: Clear card slots in case anything is already in the scene
+        ClearPreviousUpgradeCards();
+
+        playerController = FindObjectOfType<PlayerPowerUpController>();
+
     }
+
 
     public void TriggerUpgradeChoice()
     {
@@ -86,6 +93,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         Time.fixedDeltaTime = 0f;
 
+        ClearPreviousUpgradeCards();
         ShowUpgradeCards();
     }
 
@@ -94,40 +102,44 @@ public class GameManager : MonoBehaviour
         if (upgradePanel != null)
             upgradePanel.SetActive(true);
 
-        // Shuffle sprite array and pick 3
-        List<Sprite> shuffled = new List<Sprite>(upgradeCardSprites);
+        // Shuffle available upgrade definitions
+        List<UpgradeDefinition> shuffled = new List<UpgradeDefinition>(upgradeDefinitions);
         ShuffleList(shuffled);
 
-        for (int i = 0; i < upgradeButtons.Length && i < shuffled.Count; i++)
+        for (int i = 0; i < cardSlots.Length && i < shuffled.Count; i++)
         {
-            Button btn = upgradeButtons[i];
-            btn.gameObject.SetActive(true);
+            var upgradeDef = shuffled[i];
+            var slot = cardSlots[i];
 
-            Sprite assignedSprite = shuffled[i];
+            // Instantiate the prefab
+            GameObject instance = Instantiate(upgradeDef.upgradePrefab, slot.position, slot.rotation, slot);
 
-            // Set the image
-            Image img = btn.GetComponent<Image>();
-            if (img != null)
-                img.sprite = assignedSprite;
+            // Find the button in the prefab
+            Button btn = instance.GetComponentInChildren<Button>();
 
-            // Remove old listeners
-            btn.onClick.RemoveAllListeners();
-
-            // Assign upgrade logic
-            if (spriteToUpgradeMap.ContainsKey(assignedSprite))
+            if (btn != null)
             {
-                UpgradeType upgradeType = spriteToUpgradeMap[assignedSprite];
-                btn.onClick.AddListener(() => ApplyUpgrade(upgradeType));
+                btn.onClick.RemoveAllListeners();
+                UpgradeType type = upgradeDef.upgradeType; // Capture in local variable for closure
+                btn.onClick.AddListener(() => ApplyUpgrade(type));
+                btn.onClick.AddListener(() => StartCoroutine(GraduallyResumeGame()));
+                btn.onClick.AddListener(() => upgradePanel.SetActive(false));
             }
-
-            // Close panel and resume game gradually
-            btn.onClick.AddListener(() =>
-            {
-                upgradePanel.SetActive(false);
-                StartCoroutine(GraduallyResumeGame());
-            });
         }
     }
+
+
+    void ClearPreviousUpgradeCards()
+    {
+        foreach (var slot in cardSlots)
+        {
+            foreach (Transform child in slot)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
 
     void ApplyUpgrade(UpgradeType type)
     {
@@ -143,11 +155,6 @@ public class GameManager : MonoBehaviour
             case UpgradeType.FullHeal:
                 playerController.FullHeal();
                 Debug.Log("Upgrade: Full Health restored!");
-                break;
-
-            case UpgradeType.ImmunityToSimpleMeteor:
-                // This would require additional implementation in the collision system
-                Debug.Log("Upgrade: Immunity to simple meteors activated!");
                 break;
 
             case UpgradeType.IncreaseShieldDuration:
