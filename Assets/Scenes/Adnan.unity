@@ -849,6 +849,12 @@ MonoBehaviour:
   borderOffset: 1
   tiltChangeThreshold: 0.3
   fastModeTime: 0.3
+  webGLTiltSensitivity: 0.7
+  webGLTiltOffset: 0
+  useHorizontalOrientation: 1
+  webGLSmoothingFactor: 0.4
+  webGLMaxTiltAngle: 45
+  useWebGLFiltering: 1
   arrowMoveSpeed: 6
   arrowSmoothing: 8
   currentControlType: 0

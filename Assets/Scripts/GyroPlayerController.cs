@@ -27,8 +27,12 @@ public class PlayerController : MonoBehaviour
     public float fastModeTime = 0.3f;
 
     [Header("WebGL Gyro Settings")]
-    public float webGLTiltSensitivity = 0.5f;
+    public float webGLTiltSensitivity = 0.08f; // Increased from 0.02f
     public float webGLTiltOffset = 0f; // To calibrate neutral position
+    public bool useHorizontalOrientation = true; // Use beta (front-back) for landscape games
+    public float webGLSmoothingFactor = 0.5f; // Reduced from 0.8f for more responsiveness
+    public float webGLMaxTiltAngle = 45f; // Clamp input to this range
+    public bool useWebGLFiltering = true; // Enable additional filtering for WebGL
 
     [Header("Arrow Control Settings")]
     public float arrowMoveSpeed = 6f;
@@ -59,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     // WebGL gyro variables
     private float webGLTilt = 0f;
+    private float webGLTiltSmoothed = 0f; // Smoothed tilt value
+    private float webGLTiltRaw = 0f; // Raw tilt value for debugging
     private bool gyroPermissionGranted = false;
     private bool gyroSupported = false;
 
@@ -78,6 +84,9 @@ public class PlayerController : MonoBehaviour
     
     [DllImport("__Internal")]
     private static extern float GetDeviceOrientationGamma();
+    
+    [DllImport("__Internal")]
+    private static extern float GetDeviceOrientationAlpha();
     
     [DllImport("__Internal")]
     private static extern bool HasDeviceOrientationPermission();
@@ -166,9 +175,41 @@ public class PlayerController : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
         if (gyroSupported && gyroPermissionGranted)
         {
-            // Use WebGL device orientation API
-            float gamma = GetDeviceOrientationGamma(); // Left-right tilt
-            webGLTilt = (gamma + webGLTiltOffset) * webGLTiltSensitivity;
+            // Use different axes based on orientation
+            float tiltValue;
+            if (useHorizontalOrientation)
+            {
+                // For landscape/horizontal games, use beta (front-back tilt)
+                // This corresponds to tilting the device left/right when held horizontally
+                tiltValue = GetDeviceOrientationBeta();
+            }
+            else
+            {
+                // For portrait games, use gamma (left-right tilt)
+                tiltValue = GetDeviceOrientationGamma();
+            }
+            
+            // Store raw value for debugging
+            webGLTiltRaw = tiltValue;
+            
+            // Apply offset and clamp to max angle
+            tiltValue = tiltValue + webGLTiltOffset;
+            tiltValue = Mathf.Clamp(tiltValue, -webGLMaxTiltAngle, webGLMaxTiltAngle);
+            
+            // Apply sensitivity
+            float processedTilt = tiltValue * webGLTiltSensitivity;
+            
+            // Apply smoothing if enabled
+            if (useWebGLFiltering)
+            {
+                webGLTiltSmoothed = Mathf.Lerp(webGLTiltSmoothed, processedTilt, 1f - webGLSmoothingFactor);
+                webGLTilt = webGLTiltSmoothed;
+            }
+            else
+            {
+                webGLTilt = processedTilt;
+            }
+            
             tilt = webGLTilt;
         }
         else
@@ -335,17 +376,33 @@ public class PlayerController : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
         if (gyroSupported && gyroPermissionGranted)
         {
-            webGLTiltOffset = -GetDeviceOrientationGamma();
+            if (useHorizontalOrientation)
+            {
+                webGLTiltOffset = -GetDeviceOrientationBeta();
+            }
+            else
+            {
+                webGLTiltOffset = -GetDeviceOrientationGamma();
+            }
             Debug.Log($"Gyro calibrated. Offset: {webGLTiltOffset}");
         }
 #endif
+    }
+
+    // Method to toggle between horizontal and vertical orientation modes
+    public void ToggleOrientation()
+    {
+        useHorizontalOrientation = !useHorizontalOrientation;
+        Debug.Log($"Orientation mode: {(useHorizontalOrientation ? "Horizontal (Beta)" : "Vertical (Gamma)")}");
+        // Recalibrate when switching orientation
+        CalibrateGyro();
     }
 
     void OnGUI()
     {
         if (!showDebugInfo) return;
 
-        GUI.Box(new Rect(10, 10, 300, 140), "Debug Info");
+        GUI.Box(new Rect(10, 10, 300, 200), "Debug Info");
         GUI.Label(new Rect(20, 35, 280, 20), $"Current Control: {currentControlType}");
 
         if (currentControlType == ControlType.Gyro)
@@ -353,8 +410,10 @@ public class PlayerController : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
             GUI.Label(new Rect(20, 55, 280, 20), $"WebGL Gyro: {gyroSupported}");
             GUI.Label(new Rect(20, 75, 280, 20), $"Permission: {gyroPermissionGranted}");
-            GUI.Label(new Rect(20, 95, 280, 20), $"Tilt: {webGLTilt:F2}");
-            GUI.Label(new Rect(20, 115, 280, 20), $"Fast Mode: {inFastMode}");
+            GUI.Label(new Rect(20, 95, 280, 20), $"Orientation: {(useHorizontalOrientation ? "Horizontal" : "Vertical")}");
+            GUI.Label(new Rect(20, 115, 280, 20), $"Raw Tilt: {webGLTiltRaw:F2}");
+            GUI.Label(new Rect(20, 135, 280, 20), $"Processed Tilt: {webGLTilt:F2}");
+            GUI.Label(new Rect(20, 155, 280, 20), $"Fast Mode: {inFastMode}");
 #else
             GUI.Label(new Rect(20, 55, 280, 20), $"Tilt: {Input.acceleration.x:F2}");
             GUI.Label(new Rect(20, 75, 280, 20), $"Fast Mode: {inFastMode}");
@@ -366,6 +425,6 @@ public class PlayerController : MonoBehaviour
             GUI.Label(new Rect(20, 75, 280, 20), "Touch arrow buttons to move");
         }
 
-        GUI.Label(new Rect(20, 95, 280, 20), $"Position: {transform.position.x:F2}");
+        GUI.Label(new Rect(20, 175, 280, 20), $"Position: {transform.position.x:F2}");
     }
 }
