@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class ArrowControlsUI : MonoBehaviour
-{
+{ 
     [Header("UI References")]
     public Button leftButton;
     public Button rightButton;

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
@@ -35,12 +35,13 @@ public class CoinManager : MonoBehaviour
 
     void Update()
     {
+        // Smoothly increase the slider
         if (coinSlider != null && coinSlider.value < targetFill)
         {
-            coinSlider.value = Mathf.MoveTowards(coinSlider.value, targetFill, fillSpeed * Time.deltaTime);
+            coinSlider.value = Mathf.MoveTowards(coinSlider.value, targetFill, fillSpeed * Time.unscaledDeltaTime);
         }
 
-        // Optional: If full and not yet handled
+        // Check if bar is full
         if (coinSlider.value >= 1f && currentCoins >= coinsToFillBar)
         {
             ReachedFullBar();
@@ -53,14 +54,12 @@ public class CoinManager : MonoBehaviour
     public void AddCoin(int value = 1)
     {
         currentCoins += value;
-
-        // Clamp target fill between 0 and 1
         targetFill = Mathf.Clamp01((float)currentCoins / coinsToFillBar);
     }
 
     private void ReachedFullBar()
     {
         Debug.Log("Coin bar filled!");
-        // TODO: Add your reward logic here
+        GameManager.Instance?.TriggerUpgradeChoice(); // ← This is what was missing
     }
 }
