@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Runtime.InteropServices;
 
 public enum ControlType
 {
@@ -24,6 +25,10 @@ public class PlayerController : MonoBehaviour
     [Header("Gyro Settings")]
     public float tiltChangeThreshold = 0.3f;
     public float fastModeTime = 0.3f;
+
+    [Header("WebGL Gyro Settings")]
+    public float webGLTiltSensitivity = 0.5f;
+    public float webGLTiltOffset = 0f; // To calibrate neutral position
 
     [Header("Arrow Control Settings")]
     public float arrowMoveSpeed = 6f;
@@ -52,8 +57,31 @@ public class PlayerController : MonoBehaviour
     private bool leftPressed = false;
     private bool rightPressed = false;
 
+    // WebGL gyro variables
+    private float webGLTilt = 0f;
+    private bool gyroPermissionGranted = false;
+    private bool gyroSupported = false;
+
     // UI References
     private ArrowControlsUI arrowUI;
+
+    // WebGL JavaScript interface
+#if UNITY_WEBGL && !UNITY_EDITOR
+    [DllImport("__Internal")]
+    private static extern void RequestDeviceOrientationPermission();
+    
+    [DllImport("__Internal")]
+    private static extern bool IsDeviceOrientationSupported();
+    
+    [DllImport("__Internal")]
+    private static extern float GetDeviceOrientationBeta();
+    
+    [DllImport("__Internal")]
+    private static extern float GetDeviceOrientationGamma();
+    
+    [DllImport("__Internal")]
+    private static extern bool HasDeviceOrientationPermission();
+#endif
 
     void Start()
     {
@@ -81,12 +109,40 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("ArrowControlsUI not found. Arrow controls will not be visible.");
         }
 
+        // Initialize WebGL gyro support
+        InitializeWebGLGyro();
+
         // Initialize control type
         SetControlType(currentControlType);
     }
 
+    void InitializeWebGLGyro()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        gyroSupported = IsDeviceOrientationSupported();
+        if (gyroSupported)
+        {
+            Debug.Log("Device orientation supported in WebGL");
+            // Request permission (required for iOS 13+ Safari)
+            RequestDeviceOrientationPermission();
+        }
+        else
+        {
+            Debug.Log("Device orientation not supported in WebGL");
+        }
+#endif
+    }
+
     void Update()
     {
+        // Update WebGL gyro permission status
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (gyroSupported && !gyroPermissionGranted)
+        {
+            gyroPermissionGranted = HasDeviceOrientationPermission();
+        }
+#endif
+
         // Handle input based on current control type
         switch (currentControlType)
         {
@@ -105,7 +161,28 @@ public class PlayerController : MonoBehaviour
 
     void HandleGyroInput()
     {
-        float tilt = Input.acceleration.x * tiltSensitivity;
+        float tilt = 0f;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (gyroSupported && gyroPermissionGranted)
+        {
+            // Use WebGL device orientation API
+            float gamma = GetDeviceOrientationGamma(); // Left-right tilt
+            webGLTilt = (gamma + webGLTiltOffset) * webGLTiltSensitivity;
+            tilt = webGLTilt;
+        }
+        else
+        {
+            // Fallback to keyboard for testing in WebGL
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                tilt = -1f;
+            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                tilt = 1f;
+        }
+#else
+        // Use Unity's standard input system for editor/mobile builds
+        tilt = Input.acceleration.x * tiltSensitivity;
+#endif
 
         // Calculate tilt change rate
         float tiltChange = Mathf.Abs(tilt - lastTilt);
@@ -252,17 +329,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Public method to calibrate gyro (call from UI button)
+    public void CalibrateGyro()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        if (gyroSupported && gyroPermissionGranted)
+        {
+            webGLTiltOffset = -GetDeviceOrientationGamma();
+            Debug.Log($"Gyro calibrated. Offset: {webGLTiltOffset}");
+        }
+#endif
+    }
+
     void OnGUI()
     {
         if (!showDebugInfo) return;
 
-        GUI.Box(new Rect(10, 10, 300, 100), "Debug Info");
+        GUI.Box(new Rect(10, 10, 300, 140), "Debug Info");
         GUI.Label(new Rect(20, 35, 280, 20), $"Current Control: {currentControlType}");
 
         if (currentControlType == ControlType.Gyro)
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            GUI.Label(new Rect(20, 55, 280, 20), $"WebGL Gyro: {gyroSupported}");
+            GUI.Label(new Rect(20, 75, 280, 20), $"Permission: {gyroPermissionGranted}");
+            GUI.Label(new Rect(20, 95, 280, 20), $"Tilt: {webGLTilt:F2}");
+            GUI.Label(new Rect(20, 115, 280, 20), $"Fast Mode: {inFastMode}");
+#else
             GUI.Label(new Rect(20, 55, 280, 20), $"Tilt: {Input.acceleration.x:F2}");
             GUI.Label(new Rect(20, 75, 280, 20), $"Fast Mode: {inFastMode}");
+#endif
         }
         else
         {
