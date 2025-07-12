@@ -1,0 +1,1559 @@
+fileFormatVersion: 2
+guid: 639226190ea6fe5469efd1cd2a19f6fa
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b69b9a51c09644f9c9c552f7a11f61
+      internalID: 1819322200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_1
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556e60b9f9282c843a69d53e24be0ae7
+      internalID: 1107501971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_2
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed732c7b53979c5468b8d273f346fac7
+      internalID: -945642718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_3
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856016f59e6edfc46904e33e22fee421
+      internalID: -1830573203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_4
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da25d34052107e4489fad158aea56505
+      internalID: -1154891650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_5
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 745a189e78454db42a9eef8cdd08f742
+      internalID: -158704341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_6
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1088a5b73ea5a2343bc06decebb65a05
+      internalID: -567490081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_7
+      rect:
+        serializedVersion: 2
+        x: 14000
+        y: 7000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 159391ed61a5d4d4fb8f03775f04b93f
+      internalID: 1648948613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e491d831f10b59e4b83ef5aaeeba21f1
+      internalID: -1878802776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_9
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff44734789664340b0a84cfcbfe6664
+      internalID: 452112062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_10
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4218bdb790890f4db7bb64e6ab2c92e
+      internalID: 1198623980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_11
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40cdf1d7d66a6514fbf892be09adb16d
+      internalID: -1892550686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_12
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f882f9f6504f9334dbc48923460513fe
+      internalID: 1612976627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_13
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4338f4148a698ff4583bb743c77caadb
+      internalID: -1966488135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_14
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0325f6b2469b26c4dbf1f7a5303db294
+      internalID: -1038476570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_15
+      rect:
+        serializedVersion: 2
+        x: 14000
+        y: 6000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025170c566882174ea7ca5d305842499
+      internalID: 1492830832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462013d9c97943641ba87ef9cf57d434
+      internalID: 1801629177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_17
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24e0154fdd89a5e4bbd62ac88f8c2b4a
+      internalID: 811330456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_18
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4891ebfcbe1bbbc42a4e4fc57bba6a68
+      internalID: -471577846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_19
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 566e79b737f6d9b418116335f9f139d8
+      internalID: 595464752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_20
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0daf4fc6c997aff4f8f442bb76db5b43
+      internalID: 1802451984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_21
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f46f53429a7761a42b9fe0316d78609c
+      internalID: 895991686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_22
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad2a0f2759004044ea5ff55d2eed08f4
+      internalID: 1632398611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_23
+      rect:
+        serializedVersion: 2
+        x: 14000
+        y: 5000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1cb7a389756c4b499fb5c1c2522bf58
+      internalID: 1365967213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b59411fb2e3f24bbcd8251a39d302b
+      internalID: 1754523138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_25
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff003b8cf5ae23145a2be246f6d52a83
+      internalID: -1434334934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_26
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841fd06665c24bf45bc22fa0d77a0c68
+      internalID: -1382365494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_27
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177d1b4e30ec1ce439d6d7504fde94f0
+      internalID: -168189883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_28
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd2017121eeda144fba269a7303b19f2
+      internalID: 652718982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_29
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef5b2c82498a07c49808884dfa1c7587
+      internalID: -413796280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_30
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c2470556c64dbb42934a28df4ff5c41
+      internalID: -77023392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_31
+      rect:
+        serializedVersion: 2
+        x: 14000
+        y: 4000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa00ca51f09e9a4b8d523cb0770943a
+      internalID: -525861850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac82afb646fac3c40978e4821c01552d
+      internalID: 1527201447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_33
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6436f122413054caf4d51011011680
+      internalID: 473387581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_34
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f9dc33a7b168a409e10460ae0e11d8
+      internalID: 1670178483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_35
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39cc9cd279b37445aae148555d7052a
+      internalID: 1552358194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_36
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d20f0387f87cd624fbdc986334fb9d88
+      internalID: 771487166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_37
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416e6387e490b62448c855fb9ac8b57d
+      internalID: -92224985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_38
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217a14aab9364c34fb88d8c2bc867e10
+      internalID: -2001258159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_39
+      rect:
+        serializedVersion: 2
+        x: 14000
+        y: 3000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69580df7ce5105469dcb524c5e6ff66
+      internalID: -315736617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8143fd05372017045a213a6d82f93ea1
+      internalID: 225351882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_41
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83def5c13c7eaa43a3b559ccdd41fbf
+      internalID: 1601063049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_42
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c51dab1cdb5c5947a5dda29d1d0e2f4
+      internalID: 1043970686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_43
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14bcd3a07a85d840ab5e1882fb3ce35
+      internalID: -1585919095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_44
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88aa2f8c14f3cf64289b6ea2873d5859
+      internalID: 1043477843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_45
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc865714b3e5a324293a9102f368c214
+      internalID: -2122336191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_46
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f862b5fed143cde4badd744507de3a27
+      internalID: -960536327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_47
+      rect:
+        serializedVersion: 2
+        x: 14000
+        y: 2000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98cd98daf651714698f138500582143
+      internalID: 818890246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce3cb1054ab65884eb154029cf1d7913
+      internalID: 26526962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_49
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6105ba4361ba14886f473d60b97ac4
+      internalID: -142436302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_50
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8026f530996939429fd8083f888629e
+      internalID: -224177479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_51
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb6362df07c08dd4aa2815fd5fc6c409
+      internalID: 780741595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_52
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7277ec4cb4c47c4099cab1df03dfeaa
+      internalID: -343590588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_53
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07ac797f5ffc1144bf5a882144b290c
+      internalID: -1950505044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_54
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23824531f81890543a411090c5a6f326
+      internalID: 872874150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_55
+      rect:
+        serializedVersion: 2
+        x: 14000
+        y: 1000
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d59a5083380271f43ba71ad2f41092e9
+      internalID: -2026370302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90cab6768475868428a3fb9c83fbdd4e
+      internalID: 1045099111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_57
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616beb97e7fe56a468019f1431acdd11
+      internalID: 1042379581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_58
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61130fb010eeac4bbb937b7d913be65
+      internalID: 625003680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_59
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6492936347548ac4ba605a0c1e1a4cdf
+      internalID: 2130133540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BiggieShip_Animated_v9_60
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 0
+        width: 2000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419b2160debfd6049a66594d55ff5536
+      internalID: -2063136871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3cf027242c6bba446993207b597dab7b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BiggieShip_Animated_v9_0: 1819322200
+      BiggieShip_Animated_v9_1: 1107501971
+      BiggieShip_Animated_v9_10: 1198623980
+      BiggieShip_Animated_v9_11: -1892550686
+      BiggieShip_Animated_v9_12: 1612976627
+      BiggieShip_Animated_v9_13: -1966488135
+      BiggieShip_Animated_v9_14: -1038476570
+      BiggieShip_Animated_v9_15: 1492830832
+      BiggieShip_Animated_v9_16: 1801629177
+      BiggieShip_Animated_v9_17: 811330456
+      BiggieShip_Animated_v9_18: -471577846
+      BiggieShip_Animated_v9_19: 595464752
+      BiggieShip_Animated_v9_2: -945642718
+      BiggieShip_Animated_v9_20: 1802451984
+      BiggieShip_Animated_v9_21: 895991686
+      BiggieShip_Animated_v9_22: 1632398611
+      BiggieShip_Animated_v9_23: 1365967213
+      BiggieShip_Animated_v9_24: 1754523138
+      BiggieShip_Animated_v9_25: -1434334934
+      BiggieShip_Animated_v9_26: -1382365494
+      BiggieShip_Animated_v9_27: -168189883
+      BiggieShip_Animated_v9_28: 652718982
+      BiggieShip_Animated_v9_29: -413796280
+      BiggieShip_Animated_v9_3: -1830573203
+      BiggieShip_Animated_v9_30: -77023392
+      BiggieShip_Animated_v9_31: -525861850
+      BiggieShip_Animated_v9_32: 1527201447
+      BiggieShip_Animated_v9_33: 473387581
+      BiggieShip_Animated_v9_34: 1670178483
+      BiggieShip_Animated_v9_35: 1552358194
+      BiggieShip_Animated_v9_36: 771487166
+      BiggieShip_Animated_v9_37: -92224985
+      BiggieShip_Animated_v9_38: -2001258159
+      BiggieShip_Animated_v9_39: -315736617
+      BiggieShip_Animated_v9_4: -1154891650
+      BiggieShip_Animated_v9_40: 225351882
+      BiggieShip_Animated_v9_41: 1601063049
+      BiggieShip_Animated_v9_42: 1043970686
+      BiggieShip_Animated_v9_43: -1585919095
+      BiggieShip_Animated_v9_44: 1043477843
+      BiggieShip_Animated_v9_45: -2122336191
+      BiggieShip_Animated_v9_46: -960536327
+      BiggieShip_Animated_v9_47: 818890246
+      BiggieShip_Animated_v9_48: 26526962
+      BiggieShip_Animated_v9_49: -142436302
+      BiggieShip_Animated_v9_5: -158704341
+      BiggieShip_Animated_v9_50: -224177479
+      BiggieShip_Animated_v9_51: 780741595
+      BiggieShip_Animated_v9_52: -343590588
+      BiggieShip_Animated_v9_53: -1950505044
+      BiggieShip_Animated_v9_54: 872874150
+      BiggieShip_Animated_v9_55: -2026370302
+      BiggieShip_Animated_v9_56: 1045099111
+      BiggieShip_Animated_v9_57: 1042379581
+      BiggieShip_Animated_v9_58: 625003680
+      BiggieShip_Animated_v9_59: 2130133540
+      BiggieShip_Animated_v9_6: -567490081
+      BiggieShip_Animated_v9_60: -2063136871
+      BiggieShip_Animated_v9_7: 1648948613
+      BiggieShip_Animated_v9_8: -1878802776
+      BiggieShip_Animated_v9_9: 452112062
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public enum PowerUpType { SpeedBoost, DamageBoost }
+    public enum PowerUpType { SpeedBoost, EagleStrategem, Magnet, Shield }
     public PowerUpType powerUpType;
     public float duration = 5f;
 
