@@ -16,6 +16,32 @@ public class GameManager : MonoBehaviour
     public float slowDownDuration = 3f;
     public float targetTimeScale = 0f;
 
+    [System.Serializable]
+    public class UpgradeDefinition
+    {
+        public Sprite upgradeSprite;
+        public UpgradeType upgradeType;
+    }
+
+    public enum UpgradeType
+    {
+        IncreaseSpeed,
+        FullHeal,
+        AmuneToSimpleMeteor,
+        AmuneToFire,
+        GainTwoTimesCoin,
+        IncreaseShieldDuration,
+        IncreaseMagnetDuration,
+        IncreaseLaserDuration,
+        // Add more upgrades here
+    }
+
+    [Header("Upgrade Mappings")]
+    public List<UpgradeDefinition> upgradeDefinitions = new List<UpgradeDefinition>();
+
+    private Dictionary<Sprite, UpgradeType> spriteToUpgradeMap = new Dictionary<Sprite, UpgradeType>();
+
+
     void Awake()
     {
         if (Instance == null)
@@ -53,6 +79,14 @@ public class GameManager : MonoBehaviour
         if (upgradePanel != null)
             upgradePanel.SetActive(true);
 
+        // Create the mapping dictionary
+        spriteToUpgradeMap.Clear();
+        foreach (var def in upgradeDefinitions)
+        {
+            if (!spriteToUpgradeMap.ContainsKey(def.upgradeSprite))
+                spriteToUpgradeMap.Add(def.upgradeSprite, def.upgradeType);
+        }
+
         // Shuffle sprite array and pick 3
         List<Sprite> shuffled = new List<Sprite>(upgradeCardSprites);
         ShuffleList(shuffled);
@@ -62,16 +96,79 @@ public class GameManager : MonoBehaviour
             Button btn = upgradeButtons[i];
             btn.gameObject.SetActive(true);
 
-            // Set the image of the button to the card sprite
+            Sprite assignedSprite = shuffled[i];
+
+            // Set the image
             Image img = btn.GetComponent<Image>();
             if (img != null)
             {
-                img.sprite = shuffled[i];
+                img.sprite = assignedSprite;
             }
 
-            // TODO: Assign what the card does on click later
+            // Remove old listeners
+            btn.onClick.RemoveAllListeners();
+
+            // Assign logic
+            if (spriteToUpgradeMap.ContainsKey(assignedSprite))
+            {
+                UpgradeType upgradeType = spriteToUpgradeMap[assignedSprite];
+                btn.onClick.AddListener(() => ApplyUpgrade(upgradeType));
+            }
+
+            // Optional: Close panel after selection
+            btn.onClick.AddListener(() =>
+            {
+                upgradePanel.SetActive(false);
+                ResumeGameAfterUpgrade();
+            });
         }
     }
+
+    void ApplyUpgrade(UpgradeType type)
+    {
+        switch (type)
+        {
+            case UpgradeType.IncreaseSpeed:
+                Debug.Log("Upgrade: Speed increased!");
+                // TODO: Apply speed logic
+                break;
+
+            case UpgradeType.FullHeal:
+                Debug.Log("Upgrade: Full Health activated!");
+                // TODO: Add shield
+                break;
+
+            case UpgradeType.AmuneToSimpleMeteor:
+                Debug.Log("Upgrade: Amune To Simple Meteor!");
+                // TODO: Heal player
+                break;
+            case UpgradeType.AmuneToFire:
+                Debug.Log("Upgrade: Amune To Fire!");
+                // TODO: Heal player
+                break;
+            case UpgradeType.GainTwoTimesCoin:
+                Debug.Log("Upgrade: Gain Two Times Coin!");
+                // TODO: Heal player
+                break;
+            case UpgradeType.IncreaseShieldDuration:
+                Debug.Log("Upgrade: Increase Shield Duration!");
+                // TODO: Heal player
+                break;
+            case UpgradeType.IncreaseMagnetDuration:
+                Debug.Log("Upgrade: Increase Magnet Duration!");
+                // TODO: Heal player
+                break;
+            case UpgradeType.IncreaseLaserDuration:
+                Debug.Log("Upgrade: Increase Magnet Duration!");
+                // TODO: Heal player
+                break;
+
+            default:
+                Debug.LogWarning("Unknown upgrade selected.");
+                break;
+        }
+    }
+
 
     void ShuffleList<T>(List<T> list)
     {
@@ -83,4 +180,16 @@ public class GameManager : MonoBehaviour
             list[rand] = temp;
         }
     }
+    void ResumeGameAfterUpgrade()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
+        if (upgradePanel != null)
+            upgradePanel.SetActive(false);
+
+        Debug.Log("Game resumed after upgrade.");
+    }
+
 }
+
