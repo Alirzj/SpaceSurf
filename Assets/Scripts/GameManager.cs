@@ -27,9 +27,7 @@ public class GameManager : MonoBehaviour
     {
         IncreaseSpeed,
         FullHeal,
-        AmuneToSimpleMeteor,
         AmuneToFire,
-        GainTwoTimesCoin,
         IncreaseShieldDuration,
         IncreaseMagnetDuration,
         IncreaseLaserDuration,
@@ -132,22 +130,12 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Upgrade: Speed increased!");
                 // TODO: Apply speed logic
                 break;
-
             case UpgradeType.FullHeal:
                 Debug.Log("Upgrade: Full Health activated!");
                 // TODO: Add shield
                 break;
-
-            case UpgradeType.AmuneToSimpleMeteor:
-                Debug.Log("Upgrade: Amune To Simple Meteor!");
-                // TODO: Heal player
-                break;
             case UpgradeType.AmuneToFire:
                 Debug.Log("Upgrade: Amune To Fire!");
-                // TODO: Heal player
-                break;
-            case UpgradeType.GainTwoTimesCoin:
-                Debug.Log("Upgrade: Gain Two Times Coin!");
                 // TODO: Heal player
                 break;
             case UpgradeType.IncreaseShieldDuration:
@@ -162,7 +150,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Upgrade: Increase Magnet Duration!");
                 // TODO: Heal player
                 break;
-
             default:
                 Debug.LogWarning("Unknown upgrade selected.");
                 break;
