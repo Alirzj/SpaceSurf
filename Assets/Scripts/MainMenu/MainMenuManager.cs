@@ -8,8 +8,11 @@ public class MainMenuManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject creditsPanel;
 
+    public AudioClip audio;
     public void StartButton()
     {
+        if (audio != null)
+            AudioManager.Instance?.PlaySound2D(audio, 1f);
         SceneManager.LoadScene(gameScene);
     }
 
@@ -31,6 +34,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void Exitbutton()
     {
+        if (audio != null)
+            AudioManager.Instance?.PlaySound2D(audio, 1f);
         Application.Quit();
     }
 
