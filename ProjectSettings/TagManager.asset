@@ -10,6 +10,7 @@ TagManager:
   - Obstacle3
   - CardArtwork
   - CardText
+  - Trigger
   layers:
   - Default
   - TransparentFX

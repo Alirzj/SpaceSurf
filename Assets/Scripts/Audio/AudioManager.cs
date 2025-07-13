@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays a single 2D sound.
     /// </summary>
-    public void PlaySound2D(AudioClip clip, float volume = -1f)
+    public void PlaySound2D(AudioClip clip, float volume = 1f)
     {
         if (clip == null) return;
 
@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays a random 2D sound from a given array.
     /// </summary>
-    public void PlayRandomSound2D(AudioClip[] clips, float volume = -1f)
+    public void PlayRandomSound2D(AudioClip[] clips, float volume = 1f)
     {
         if (clips == null || clips.Length == 0) return;
 

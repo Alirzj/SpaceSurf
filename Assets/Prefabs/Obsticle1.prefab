@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7503746188249405608}
   - component: {fileID: -7335263500930610508}
   - component: {fileID: -701545296087680201}
+  - component: {fileID: 611172827898210106}
   m_Layer: 0
   m_Name: Obsticle1
   m_TagString: Obstacle1
@@ -120,5 +121,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 7.362971, y: 5.352754, z: 0.20000002}
+  m_Center: {x: 0.11756629, y: -0.3801635, z: 0}
+--- !u!114 &611172827898210106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4053219948457652643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1c25b15a03f234b9e50dc8c2ba132b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: a5a36d4c34325254ca0e26ae9939d731, type: 3}
+  - {fileID: 8300000, guid: 32e6223504072214d95e994ea0d67ce0, type: 3}
+  - {fileID: 8300000, guid: 70486127da1f19240899c5a2af0c9b47, type: 3}
