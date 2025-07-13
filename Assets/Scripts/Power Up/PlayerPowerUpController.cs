@@ -13,6 +13,10 @@ public class PlayerPowerUpController : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
 
+
+    public AudioClip[] HitAudios;
+    public AudioClip[] RockAudios;
+
     [Header("Base Stats")]
     public float baseSpeed = 40f;
     public float baseSpeedMultiplier = 1f;
@@ -524,6 +528,10 @@ public class PlayerPowerUpController : MonoBehaviour
             {
                 int damage = GetObstacleDamage(collision.gameObject.tag);
                 currentHealth -= damage;
+
+                AudioManager.Instance?.PlayRandomSound2D(HitAudios, 1f);
+                AudioManager.Instance?.PlayRandomSound2D(RockAudios, 1f);
+
                 UpdateHealthUI();
                 Debug.Log("Player hit! Health: " + currentHealth);
 
