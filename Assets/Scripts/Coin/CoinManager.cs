@@ -15,6 +15,9 @@ public class CoinManager : MonoBehaviour
     private int currentCoins = 0;
     private float targetFill = 0f;
 
+    [Header("Audio")]
+    public AudioClip fullBarSound; 
+
     void Awake()
     {
         if (Instance == null)
@@ -60,6 +63,13 @@ public class CoinManager : MonoBehaviour
     private void ReachedFullBar()
     {
         Debug.Log("Coin bar filled!");
-        GameManager.Instance?.TriggerUpgradeChoice(); // ← This is what was missing
+
+        if (fullBarSound != null)
+        {
+            AudioManager.Instance?.PlaySound2D(fullBarSound);
+        }
+
+        GameManager.Instance?.TriggerUpgradeChoice();
     }
+
 }
