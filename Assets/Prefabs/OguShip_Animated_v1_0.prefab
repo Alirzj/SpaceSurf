@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3568191144772657141}
   - component: {fileID: 3787801806621345721}
   - component: {fileID: 4340136797641282281}
+  - component: {fileID: 2363758933102340346}
   m_Layer: 0
   m_Name: OguShip_Animated_v1_0
   m_TagString: Untagged
@@ -110,3 +111,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2363758933102340346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534731599938723935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca30b3af28635b34da7f4e60a1ccbd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
