@@ -65,6 +65,10 @@ public class PlayerPowerUpController : MonoBehaviour
     public float boostedParticleSpeed = 18f;
     public float defaultParticleSpeed = 8f;
 
+    public ParticleSystem MeteorParticles;
+    public float MeteorboostedParticleSpeed = 18f;
+    public float MeteordefaultParticleSpeed = 8f;
+
     // Active powerup instances
     private GameObject activeBiggie;
     private GameObject activeOgu;
@@ -109,7 +113,7 @@ public class PlayerPowerUpController : MonoBehaviour
         // Update distance counter
         distanceCounter += MoveToZ.globalSpeed * Time.deltaTime;
         if (distanceCounterText != null)
-            distanceCounterText.text = distanceCounter.ToString("F2");
+            distanceCounterText.text = distanceCounter.ToString("F2") + " KM"; // <- added unit
 
         // Handle active powerup effects
         if (isOguActive)
@@ -124,6 +128,7 @@ public class PlayerPowerUpController : MonoBehaviour
             Debug.Log($"Current Speed: {MoveToZ.globalSpeed}, Base Speed: {baseSpeed}, Multiplier: {baseSpeedMultiplier}, Original: {originalGlobalSpeed}");
         }
     }
+
 
     public void ActivatePowerUp(PowerUp.PowerUpType type, float duration = 0f)
     {
@@ -276,6 +281,13 @@ public class PlayerPowerUpController : MonoBehaviour
                     var main = speedParticles.main;
                     main.simulationSpeed = boostedParticleSpeed;
                 }
+
+                if (MeteorParticles != null)
+                {
+                    var main = MeteorParticles.main;
+                    main.simulationSpeed = MeteorboostedParticleSpeed;
+                }
+
                 break;
         }
     }
@@ -311,6 +323,13 @@ public class PlayerPowerUpController : MonoBehaviour
                     var main = speedParticles.main;
                     main.simulationSpeed = defaultParticleSpeed;
                 }
+
+                if (MeteorParticles != null)
+                {
+                    var main = MeteorParticles.main;
+                    main.simulationSpeed = MeteordefaultParticleSpeed;
+                }
+
                 break;
         }
     }
