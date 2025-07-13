@@ -395,33 +395,33 @@ public class PlayerController : MonoBehaviour
         CalibrateGyro();
     }
 
-    void OnGUI()
-    {
-        if (!showDebugInfo) return;
+//    void OnGUI()
+//    {
+//        if (!showDebugInfo) return;
 
-        GUI.Box(new Rect(10, 10, 300, 200), "Debug Info");
-        GUI.Label(new Rect(20, 35, 280, 20), $"Current Control: {currentControlType}");
+//        GUI.Box(new Rect(10, 10, 300, 200), "Debug Info");
+//        GUI.Label(new Rect(20, 35, 280, 20), $"Current Control: {currentControlType}");
 
-        if (currentControlType == ControlType.Gyro)
-        {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            GUI.Label(new Rect(20, 55, 280, 20), $"WebGL Gyro: {gyroSupported}");
-            GUI.Label(new Rect(20, 75, 280, 20), $"Permission: {gyroPermissionGranted}");
-            GUI.Label(new Rect(20, 95, 280, 20), $"Orientation: {(useHorizontalOrientation ? "Horizontal" : "Vertical")}");
-            GUI.Label(new Rect(20, 115, 280, 20), $"Raw Tilt: {webGLTiltRaw:F2}");
-            GUI.Label(new Rect(20, 135, 280, 20), $"Processed Tilt: {webGLTilt:F2}");
-            GUI.Label(new Rect(20, 155, 280, 20), $"Fast Mode: {inFastMode}");
-#else
-            GUI.Label(new Rect(20, 55, 280, 20), $"Tilt: {Input.acceleration.x:F2}");
-            GUI.Label(new Rect(20, 75, 280, 20), $"Fast Mode: {inFastMode}");
-#endif
-        }
-        else
-        {
-            GUI.Label(new Rect(20, 55, 280, 20), $"Arrow Input: {arrowInput:F2}");
-            GUI.Label(new Rect(20, 75, 280, 20), "Touch arrow buttons to move");
-        }
+//        if (currentControlType == ControlType.Gyro)
+//        {
+//#if UNITY_WEBGL && !UNITY_EDITOR
+//            GUI.Label(new Rect(20, 55, 280, 20), $"WebGL Gyro: {gyroSupported}");
+//            GUI.Label(new Rect(20, 75, 280, 20), $"Permission: {gyroPermissionGranted}");
+//            GUI.Label(new Rect(20, 95, 280, 20), $"Orientation: {(useHorizontalOrientation ? "Horizontal" : "Vertical")}");
+//            GUI.Label(new Rect(20, 115, 280, 20), $"Raw Tilt: {webGLTiltRaw:F2}");
+//            GUI.Label(new Rect(20, 135, 280, 20), $"Processed Tilt: {webGLTilt:F2}");
+//            GUI.Label(new Rect(20, 155, 280, 20), $"Fast Mode: {inFastMode}");
+//#else
+//            GUI.Label(new Rect(20, 55, 280, 20), $"Tilt: {Input.acceleration.x:F2}");
+//            GUI.Label(new Rect(20, 75, 280, 20), $"Fast Mode: {inFastMode}");
+//#endif
+//        }
+//        else
+//        {
+//            GUI.Label(new Rect(20, 55, 280, 20), $"Arrow Input: {arrowInput:F2}");
+//            GUI.Label(new Rect(20, 75, 280, 20), "Touch arrow buttons to move");
+//        }
 
-        GUI.Label(new Rect(20, 175, 280, 20), $"Position: {transform.position.x:F2}");
-    }
+//        GUI.Label(new Rect(20, 175, 280, 20), $"Position: {transform.position.x:F2}");
+//    }
 }

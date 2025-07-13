@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
 
         ClearPreviousUpgradeCards();
-        playerController = FindObjectOfType<PlayerPowerUpController>();
+        playerController = FindFirstObjectByType<PlayerPowerUpController>();
     }
 
     public void TriggerUpgradeChoice()

@@ -579,6 +579,9 @@ public class PlayerPowerUpController : MonoBehaviour
                 AudioManager.Instance?.PlayRandomSound2D(HitAudios, 1f);
                 AudioManager.Instance?.PlayRandomSound2D(RockAudios, 1f);
 
+                CameraShake.Instance?.ShakeCamera();
+                ImpactFlash.Instance.PlayFlash();
+
                 UpdateHealthUI();
                 Debug.Log("Player hit! Health: " + currentHealth);
 
