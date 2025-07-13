@@ -8,9 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Upgrade UI")]
-    public GameObject upgradePanel;
-    public Button[] upgradeButtons; // 3 card buttons
-    public Sprite[] upgradeCardSprites; // Sprites to assign randomly
     public Transform[] cardSlots = new Transform[3]; // Assign the 3 spawn points in inspector
 
     [Header("Slowdown Settings")]
@@ -21,14 +18,12 @@ public class GameManager : MonoBehaviour
     public float speedIncreaseAmount = 0.2f;
     public float durationIncreaseAmount = 2f;
 
-
     [System.Serializable]
     public class UpgradeDefinition
     {
         public GameObject upgradePrefab; // Prefab that includes visuals + button
         public UpgradeType upgradeType;
     }
-
 
     public enum UpgradeType
     {
@@ -42,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Upgrade Mappings")]
     public List<UpgradeDefinition> upgradeDefinitions = new List<UpgradeDefinition>();
-    private Dictionary<Sprite, UpgradeType> spriteToUpgradeMap = new Dictionary<Sprite, UpgradeType>();
 
     private PlayerPowerUpController playerController;
 
@@ -56,21 +50,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Ensure time scale is normal on start
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;
 
-        // Hide upgrade panel if it's shown in editor
-        if (upgradePanel != null)
-            upgradePanel.SetActive(false);
 
-        // Optional: Clear card slots in case anything is already in the scene
         ClearPreviousUpgradeCards();
-
         playerController = FindObjectOfType<PlayerPowerUpController>();
-
     }
-
 
     public void TriggerUpgradeChoice()
     {
@@ -99,10 +85,7 @@ public class GameManager : MonoBehaviour
 
     void ShowUpgradeCards()
     {
-        if (upgradePanel != null)
-            upgradePanel.SetActive(true);
 
-        // Shuffle available upgrade definitions
         List<UpgradeDefinition> shuffled = new List<UpgradeDefinition>(upgradeDefinitions);
         ShuffleList(shuffled);
 
@@ -111,23 +94,20 @@ public class GameManager : MonoBehaviour
             var upgradeDef = shuffled[i];
             var slot = cardSlots[i];
 
-            // Instantiate the prefab
             GameObject instance = Instantiate(upgradeDef.upgradePrefab, slot.position, slot.rotation, slot);
 
-            // Find the button in the prefab
             Button btn = instance.GetComponentInChildren<Button>();
-
             if (btn != null)
             {
                 btn.onClick.RemoveAllListeners();
-                UpgradeType type = upgradeDef.upgradeType; // Capture in local variable for closure
+                UpgradeType type = upgradeDef.upgradeType;
+
                 btn.onClick.AddListener(() => ApplyUpgrade(type));
                 btn.onClick.AddListener(() => StartCoroutine(GraduallyResumeGame()));
-                btn.onClick.AddListener(() => upgradePanel.SetActive(false));
+                btn.onClick.AddListener(ClearPreviousUpgradeCards);
             }
         }
     }
-
 
     void ClearPreviousUpgradeCards()
     {
@@ -140,7 +120,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     void ApplyUpgrade(UpgradeType type)
     {
         if (playerController == null) return;
@@ -151,32 +130,26 @@ public class GameManager : MonoBehaviour
                 playerController.UpgradeBaseSpeed(speedIncreaseAmount);
                 Debug.Log($"Upgrade: Base speed increased by {speedIncreaseAmount}!");
                 break;
-
             case UpgradeType.FullHeal:
                 playerController.FullHeal();
                 Debug.Log("Upgrade: Full Health restored!");
                 break;
-
             case UpgradeType.IncreaseShieldDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.Shield, durationIncreaseAmount);
                 Debug.Log($"Upgrade: Shield duration increased by {durationIncreaseAmount} seconds!");
                 break;
-
             case UpgradeType.IncreaseMagnetDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.Magnet, durationIncreaseAmount);
                 Debug.Log($"Upgrade: Magnet duration increased by {durationIncreaseAmount} seconds!");
                 break;
-
             case UpgradeType.IncreaseLaserDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.EagleStrategem, durationIncreaseAmount);
                 Debug.Log($"Upgrade: Laser duration increased by {durationIncreaseAmount} seconds!");
                 break;
-
             case UpgradeType.IncreaseSpeedBoostDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.SpeedBoost, durationIncreaseAmount);
                 Debug.Log($"Upgrade: Speed boost duration increased by {durationIncreaseAmount} seconds!");
                 break;
-
             default:
                 Debug.LogWarning("Unknown upgrade selected.");
                 break;
