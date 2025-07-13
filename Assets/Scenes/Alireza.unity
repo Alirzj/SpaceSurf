@@ -2968,6 +2968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb967339a5f5404a8a8f3483cab3e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showLaserGizmos: 1
+  laserGizmoColor: {r: 1, g: 0, b: 0, a: 1}
   heartImages:
   - {fileID: 1455513037}
   - {fileID: 888785417}
@@ -2997,14 +2999,15 @@ MonoBehaviour:
   oguPrefab: {fileID: 3534731599938723935, guid: 4485b6899dfa4a64fab9bcc0fd7c91f5, type: 3}
   shieldPrefab: {fileID: 8845127810013314293, guid: 2bda581d47771904880a961db8113013, type: 3}
   speedPrefab: {fileID: 0}
+  laserEndEarlyTime: 2
   shieldEffectPrefab: {fileID: 2809988948705299939, guid: 435564fac4f2fb240ae03950ba7478ed, type: 3}
   shieldEffectOffset: {x: 0, y: -0.5, z: 0}
   biggieSpawnPoint: {fileID: 1519274830}
   oguSpawnPoint: {fileID: 1519274830}
   shieldSpawnPoint: {fileID: 799215387}
   speedSpawnPoint: {fileID: 1519274830}
-  laserWidth: 10
-  laserLength: 20
+  laserWidth: 33
+  laserLength: 17.4
   speedParticles: {fileID: 913267323}
   boostedParticleSpeed: 18
   defaultParticleSpeed: 8
