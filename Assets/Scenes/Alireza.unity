@@ -369,15 +369,15 @@ MonoBehaviour:
   ResumeAudio: {fileID: 8300000, guid: 9f2efe61affd66a429eaa75928d46745, type: 3}
   UpgradeAudio: {fileID: 8300000, guid: 45c58b0d41a425d438c19d4a415415b9, type: 3}
   upgradeDefinitions:
-  - upgradePrefab: {fileID: 7617027284308363243, guid: 690ec67bb152b1244b0c155acbfabc74, type: 3}
+  - upgradePrefab: {fileID: 7617027284308363243, guid: 162ac08f8395052439f63e42d8cce48a, type: 3}
     upgradeType: 1
-  - upgradePrefab: {fileID: 981051386232206349, guid: af4063a6f5a18984a917203ff76f7905, type: 3}
+  - upgradePrefab: {fileID: 981051386232206349, guid: 0f70df459161adc41b97d82d8edb4f22, type: 3}
     upgradeType: 4
-  - upgradePrefab: {fileID: 2530902330219698673, guid: 50ea480696d33704187fe1f4c0667cde, type: 3}
+  - upgradePrefab: {fileID: 2530902330219698673, guid: a5e9ff3ac12c16340b03c65545ffd58c, type: 3}
     upgradeType: 3
-  - upgradePrefab: {fileID: 366876926050271664, guid: 1f5de5eeb6c0b0c428fa08870534e01b, type: 3}
+  - upgradePrefab: {fileID: 366876926050271664, guid: 504836beb6281404e8df864eccdb2d35, type: 3}
     upgradeType: 2
-  - upgradePrefab: {fileID: 9209241772219434761, guid: 21fa1e221e26263408a81d552a639c03, type: 3}
+  - upgradePrefab: {fileID: 9209241772219434761, guid: 56be15d3390b0cf46b73a74062807ed5, type: 3}
     upgradeType: 0
 --- !u!1 &69690301
 GameObject:
