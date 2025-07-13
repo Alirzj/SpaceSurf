@@ -8,6 +8,8 @@ TagManager:
   - Obstacle1
   - Obstacle2
   - Obstacle3
+  - CardArtwork
+  - CardText
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
+  - CardArtwork
+  - CardText
   - 
   - 
   - 
