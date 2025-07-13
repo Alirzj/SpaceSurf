@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerPowerUpController : MonoBehaviour
 {
+    [Header("Debug Visualization")]
+    public bool showLaserGizmos = true;
+    public Color laserGizmoColor = Color.red;
+
     [Header("Health UI")]
     public Image[] heartImages;
     public Sprite fullHeartSprite;
@@ -45,6 +49,9 @@ public class PlayerPowerUpController : MonoBehaviour
     public GameObject oguPrefab;
     public GameObject shieldPrefab;
     public GameObject speedPrefab;
+
+    [Header("Laser Timing")]
+    public float laserEndEarlyTime = 2f;
 
     [Header("Shield Effect")]
     public GameObject shieldEffectPrefab; // The shield effect that surrounds the player
@@ -163,8 +170,16 @@ public class PlayerPowerUpController : MonoBehaviour
         // Coming animation
         yield return StartCoroutine(PlayComingAnimation(type));
 
-        // Activate effect
-        ActivatePowerUpEffect(type);
+        // Activate effect (but don't start laser yet for Biggie)
+        if (type == PowerUp.PowerUpType.EagleStrategem)
+        {
+            isBiggieActive = true;
+            // Don't spawn laser yet
+        }
+        else
+        {
+            ActivatePowerUpEffect(type);
+        }
 
         // Play idle
         PlayIdleAnimation(type);
@@ -172,8 +187,17 @@ public class PlayerPowerUpController : MonoBehaviour
         // Wait until Idle animation state actually starts
         yield return StartCoroutine(WaitForIdleAnimation(type));
 
-        // THEN wait for duration
-        yield return new WaitForSeconds(duration);
+        // For Biggie, start laser sequence now that he's in idle
+        if (type == PowerUp.PowerUpType.EagleStrategem)
+        {
+            SpawnLaser();
+            yield return StartCoroutine(PlayLaserSequence(duration));
+        }
+        else
+        {
+            // For other powerups, just wait the full duration
+            yield return new WaitForSeconds(duration);
+        }
 
         // Leaving animation
         yield return StartCoroutine(PlayLeavingAnimation(type));
@@ -182,6 +206,32 @@ public class PlayerPowerUpController : MonoBehaviour
         DeactivatePowerUpEffect(type);
 
         activePowerUps.Remove(type);
+    }
+
+    private IEnumerator PlayLaserSequence(float totalDuration)
+    {
+        if (activeLaser == null) yield break;
+
+        Animator laserAnimator = activeLaser.GetComponent<Animator>();
+        if (laserAnimator == null) yield break;
+
+        // 1. Play laser start animation
+        laserAnimator.Play("LaserStart");
+        yield return new WaitForSeconds(GetAnimationLength(laserAnimator, "LaserStart"));
+
+        // 2. Play laser idle animation for the calculated duration
+        laserAnimator.Play("LaserIdle");
+        float idleDuration = totalDuration - laserEndEarlyTime - GetAnimationLength(laserAnimator, "LaserStart");
+        if (idleDuration > 0)
+        {
+            yield return new WaitForSeconds(idleDuration);
+        }
+
+        // 3. Play laser end animation
+        laserAnimator.Play("LaserEnd");
+        yield return new WaitForSeconds(GetAnimationLength(laserAnimator, "LaserEnd"));
+
+        Debug.Log("Laser sequence completed");
     }
 
     private IEnumerator WaitForIdleAnimation(PowerUp.PowerUpType type)
@@ -448,12 +498,13 @@ public class PlayerPowerUpController : MonoBehaviour
     {
         if (activeBiggie != null)
         {
-            // Find laser child object in Biggie prefab or create laser effect
+            // Find laser child object in Biggie prefab
             Transform laserChild = activeBiggie.transform.Find("Laser");
             if (laserChild != null)
             {
                 activeLaser = laserChild.gameObject;
                 activeLaser.SetActive(true);
+                // Don't start animation here - it will be started in StartLaserAnimation()
             }
         }
     }
@@ -683,6 +734,27 @@ public class PlayerPowerUpController : MonoBehaviour
         if (!isSpeedActive)
         {
             MoveToZ.globalSpeed = baseSpeed * baseSpeedMultiplier;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!showLaserGizmos) return;
+
+        // Set gizmo color
+        Gizmos.color = laserGizmoColor;
+
+        // Draw laser area as a wireframe box
+        Vector3 laserCenter = transform.position + Vector3.forward * (laserLength / 2f);
+        Vector3 laserSize = new Vector3(laserWidth, 1f, laserLength);
+
+        Gizmos.DrawWireCube(laserCenter, laserSize);
+
+        // Optional: Draw a different color when Biggie is active
+        if (isBiggieActive)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(laserCenter, laserSize);
         }
     }
 
