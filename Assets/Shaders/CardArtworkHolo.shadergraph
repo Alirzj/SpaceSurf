@@ -1930,7 +1930,7 @@
     "m_ObjectId": "1c3850ea07e2492ead15880a462d6793",
     "m_Title": "Base Color",
     "m_Position": {
-        "x": -1227.199951171875,
+        "x": -1227.2001953125,
         "y": -575.2000732421875
     }
 }
@@ -5477,8 +5477,8 @@
     "m_ObjectId": "8f26ee6f863b48a3bb0c6861ba220d44",
     "m_Title": "Holo Color",
     "m_Position": {
-        "x": -3004.7998046875,
-        "y": 186.39991760253907
+        "x": -3004.0,
+        "y": 186.40000915527345
     }
 }
 
@@ -6535,7 +6535,7 @@
     "m_ObjectId": "b0fc30495a284f059fd6d6842e25282f",
     "m_Title": "Add extra offset based on a second view vector locked to card pivot point",
     "m_Position": {
-        "x": -4144.80029296875,
+        "x": -4143.99951171875,
         "y": 1974.39990234375
     }
 }
@@ -7608,7 +7608,7 @@
     "m_ObjectId": "e0902fe82ce248418c50e566930495b5",
     "m_Title": "Convert heightmap to normals",
     "m_Position": {
-        "x": -226.39993286132813,
+        "x": -226.39990234375,
         "y": 750.4000244140625
     }
 }
@@ -8390,8 +8390,8 @@
     "m_ObjectId": "f818ad4b59ea476c9dd82c4adfb9fbe8",
     "m_Title": "Holo Mask",
     "m_Position": {
-        "x": -4367.2001953125,
-        "y": 1026.4000244140625
+        "x": -4367.19921875,
+        "y": 1026.39990234375
     }
 }
 

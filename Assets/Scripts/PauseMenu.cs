@@ -16,6 +16,9 @@ public class PauseMenu : MonoBehaviour
 
     [Header("Settings Panel")]
     public GameObject settingsPanel;
+    public GameObject GreyBG;
+    public GameObject GreyBG2;
+
     public Button muteButton;
     public Button gyroButton;
     public Button arrowButton;
@@ -48,6 +51,10 @@ public class PauseMenu : MonoBehaviour
         SetupButtonListeners();
         SetPauseMenuVisibility(false);
         settingsPanel.SetActive(false);
+        GreyBG.SetActive(false);
+        GreyBG2.SetActive(false);
+
+
     }
 
     void Update()
@@ -203,6 +210,7 @@ public class PauseMenu : MonoBehaviour
         }
 
         SetPauseMenuVisibility(true);
+        GreyBG2.SetActive(true);
         pauseButton.interactable = false;
     }
 
@@ -223,8 +231,11 @@ public class PauseMenu : MonoBehaviour
         }
 
         SetPauseMenuVisibility(false);
+        GreyBG2.SetActive(false);
         pauseButton.interactable = true;
         settingsPanel.SetActive(false);
+        GreyBG.SetActive(false);
+
     }
 
     public void RestartGame()
@@ -244,13 +255,18 @@ public class PauseMenu : MonoBehaviour
     public void OpenSettingsPanel()
     {
         settingsPanel.SetActive(true);
+        GreyBG.SetActive(true);
         pauseMenuPanel.SetActive(false);
+        GreyBG2.SetActive(false);
     }
 
     public void CloseSettingsPanel()
     {
         settingsPanel.SetActive(false);
+        GreyBG.SetActive(false);
         pauseMenuPanel.SetActive(true);
+        GreyBG2.SetActive(true);
+
     }
 
     public void ToggleMute()
@@ -281,6 +297,8 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuPanel == null) return;
 
         pauseMenuPanel.SetActive(visible);
+        GreyBG.SetActive(visible);
+
 
         if (useAnimations)
         {
