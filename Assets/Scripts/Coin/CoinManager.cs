@@ -60,6 +60,11 @@ public class CoinManager : MonoBehaviour
         targetFill = Mathf.Clamp01((float)currentCoins / coinsToFillBar);
     }
 
+    public int GetCoinCount()
+    {
+        return currentCoins;
+    }
+
     private void ReachedFullBar()
     {
         Debug.Log("Coin bar filled!");

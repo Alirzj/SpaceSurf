@@ -558,11 +558,41 @@ public class PlayerPowerUpController : MonoBehaviour
         }
     }
 
+    private bool hasDied = false;
+
     private void Die()
     {
+        if (hasDied) return;
+        hasDied = true;
+
         Debug.Log("Player Died!");
-        // Add death behavior here
+
+        // Stop forward movement
+        MoveToZ.globalSpeed = 0;
+
+        // Disable player movement
+        var controller = GetComponent<PlayerController>();
+        if (controller != null)
+            controller.enabled = false;
+
+        // Pause all particle systems (so they freeze instead of disappearing)
+        foreach (var ps in FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None))
+        {
+            ps.Pause();
+        }
+
+        // Disable all animators
+        foreach (var a in FindObjectsByType<Animator>(FindObjectsSortMode.None))
+        {
+            a.enabled = false;
+        }
+
+        // Disable any other game logic if needed...
+
+        // Show end screen
+        FindFirstObjectByType<EndScreenManager>()?.ShowEndScreen(distanceCounter, CoinManager.Instance?.GetCoinCount() ?? 0);
     }
+
 
     private void UpdateHealthUI()
     {

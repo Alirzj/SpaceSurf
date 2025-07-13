@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 9fec866616fd5db4f8eeb357db706f98
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Alireza.unity
     guid: f9856fca070f2e54d8c56b569e9f801e
+  - enabled: 1
+    path: Assets/Book-Page Curl/Example/scenes/Example_1_Basic Book.unity
+    guid: d3f5912676a6d8b4fa852d1305cd3814
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
