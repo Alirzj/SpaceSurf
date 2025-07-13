@@ -7,8 +7,9 @@ public class ItemSpawner : MonoBehaviour
     public GameObject[] obstaclePrefabs;
     public GameObject[] collectablePrefabs;
 
-    [Header("Shared Spawn Points")]
-    public Transform[] spawnPoints;
+    [Header("Spawn Points")]
+    public Transform[] spawnPoints;                  // Obstacle spawn points
+    public Transform[] collectableSpawnPoints;       // Assign separate points for collectables
 
     [Header("Timing Settings")]
     public float initialDelay = 10f;
@@ -47,7 +48,7 @@ public class ItemSpawner : MonoBehaviour
 
         while (true)
         {
-            int index = Random.Range(0, spawnPoints.Length);
+            int index = Random.Range(0, collectableSpawnPoints.Length);
             float delay = Random.Range(minCollectableDelay, maxCollectableDelay);
 
             yield return new WaitForSeconds(delay);
@@ -66,10 +67,10 @@ public class ItemSpawner : MonoBehaviour
 
     void SpawnCollectable(int spawnIndex)
     {
-        if (collectablePrefabs.Length == 0 || spawnPoints.Length == 0)
+        if (collectablePrefabs.Length == 0 || collectableSpawnPoints.Length == 0)
             return;
 
         GameObject prefab = collectablePrefabs[Random.Range(0, collectablePrefabs.Length)];
-        Instantiate(prefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+        Instantiate(prefab, collectableSpawnPoints[spawnIndex].position, Quaternion.identity);
     }
 }

@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
 
     [Header("Upgrade UI")]
     public Transform[] cardSlots = new Transform[3]; // Assign the 3 spawn points in inspector
@@ -17,6 +19,10 @@ public class GameManager : MonoBehaviour
     [Header("Upgrade Values")]
     public float speedIncreaseAmount = 0.2f;
     public float durationIncreaseAmount = 2f;
+    public AudioClip ResumeAudio;
+    public AudioClip UpgradeAudio;
+
+
 
     [System.Serializable]
     public class UpgradeDefinition
@@ -128,26 +134,38 @@ public class GameManager : MonoBehaviour
         {
             case UpgradeType.IncreaseSpeed:
                 playerController.UpgradeBaseSpeed(speedIncreaseAmount);
+                if (UpgradeAudio != null)
+                    AudioManager.Instance?.PlaySound2D(UpgradeAudio, 1f);
                 Debug.Log($"Upgrade: Base speed increased by {speedIncreaseAmount}!");
                 break;
             case UpgradeType.FullHeal:
                 playerController.FullHeal();
+                if (UpgradeAudio != null)
+                    AudioManager.Instance?.PlaySound2D(UpgradeAudio, 1f);
                 Debug.Log("Upgrade: Full Health restored!");
                 break;
             case UpgradeType.IncreaseShieldDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.Shield, durationIncreaseAmount);
+                if (UpgradeAudio != null)
+                    AudioManager.Instance?.PlaySound2D(UpgradeAudio, 1f);
                 Debug.Log($"Upgrade: Shield duration increased by {durationIncreaseAmount} seconds!");
                 break;
             case UpgradeType.IncreaseMagnetDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.Magnet, durationIncreaseAmount);
+                if (UpgradeAudio != null)
+                    AudioManager.Instance?.PlaySound2D(UpgradeAudio, 1f);
                 Debug.Log($"Upgrade: Magnet duration increased by {durationIncreaseAmount} seconds!");
                 break;
             case UpgradeType.IncreaseLaserDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.EagleStrategem, durationIncreaseAmount);
+                if (UpgradeAudio != null)
+                    AudioManager.Instance?.PlaySound2D(UpgradeAudio, 1f);
                 Debug.Log($"Upgrade: Laser duration increased by {durationIncreaseAmount} seconds!");
                 break;
             case UpgradeType.IncreaseSpeedBoostDuration:
                 playerController.UpgradePowerUpDuration(PowerUp.PowerUpType.SpeedBoost, durationIncreaseAmount);
+                if (UpgradeAudio != null)
+                    AudioManager.Instance?.PlaySound2D(UpgradeAudio, 1f);
                 Debug.Log($"Upgrade: Speed boost duration increased by {durationIncreaseAmount} seconds!");
                 break;
             default:
@@ -158,6 +176,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GraduallyResumeGame()
     {
+        if (ResumeAudio != null)
+            AudioManager.Instance?.PlaySound2D(ResumeAudio, 1f);
+        
         float elapsed = 0f;
         float resumeDuration = slowDownDuration;
         float startScale = 0f;

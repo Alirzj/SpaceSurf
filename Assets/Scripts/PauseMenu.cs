@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public AudioClip clickAudio;
+
     [Header("UI References")]
     public GameObject pauseMenuPanel;
     public Button pauseButton;
@@ -20,7 +22,7 @@ public class PauseMenu : MonoBehaviour
     public Button backButton;
 
     [Header("Settings")]
-    public string mainMenuSceneName = "MainMenu";
+    public string mainMenuSceneName = "Main Menu";
     public bool pauseAudio = true;
     public bool showCursor = true;
 
@@ -82,57 +84,101 @@ public class PauseMenu : MonoBehaviour
         if (pauseButton != null)
         {
             pauseButton.onClick.RemoveAllListeners();
-            pauseButton.onClick.AddListener(PauseGame);
+            pauseButton.onClick.AddListener(() =>
+            {
+                PauseGame();
+                PlayClickSound();
+            });
         }
 
         if (resumeButton != null)
         {
             resumeButton.onClick.RemoveAllListeners();
-            resumeButton.onClick.AddListener(ResumeGame);
+            resumeButton.onClick.AddListener(() =>
+            {
+                ResumeGame();
+                PlayClickSound();
+            });
         }
 
         if (restartButton != null)
         {
             restartButton.onClick.RemoveAllListeners();
-            restartButton.onClick.AddListener(RestartGame);
+            restartButton.onClick.AddListener(() =>
+            {
+                RestartGame();
+                PlayClickSound();
+            });
         }
 
         if (settingsButton != null)
         {
             settingsButton.onClick.RemoveAllListeners();
-            settingsButton.onClick.AddListener(OpenSettingsPanel);
+            settingsButton.onClick.AddListener(() =>
+            {
+                OpenSettingsPanel();
+                PlayClickSound();
+            });
         }
 
         if (quitButton != null)
         {
             quitButton.onClick.RemoveAllListeners();
-            quitButton.onClick.AddListener(QuitToMainMenu);
+            quitButton.onClick.AddListener(() =>
+            {
+                QuitToMainMenu();
+                PlayClickSound();
+            });
         }
 
         if (muteButton != null)
         {
             muteButton.onClick.RemoveAllListeners();
-            muteButton.onClick.AddListener(ToggleMute);
+            muteButton.onClick.AddListener(() =>
+            {
+                ToggleMute();
+                PlayClickSound();
+            });
         }
 
         if (gyroButton != null)
         {
             gyroButton.onClick.RemoveAllListeners();
-            gyroButton.onClick.AddListener(SetGyroControls);
+            gyroButton.onClick.AddListener(() =>
+            {
+                SetGyroControls();
+                PlayClickSound();
+            });
         }
 
         if (arrowButton != null)
         {
             arrowButton.onClick.RemoveAllListeners();
-            arrowButton.onClick.AddListener(SetArrowControls);
+            arrowButton.onClick.AddListener(() =>
+            {
+                SetArrowControls();
+                PlayClickSound();
+            });
         }
 
         if (backButton != null)
         {
             backButton.onClick.RemoveAllListeners();
-            backButton.onClick.AddListener(CloseSettingsPanel);
+            backButton.onClick.AddListener(() =>
+            {
+                CloseSettingsPanel();
+                PlayClickSound();
+            });
         }
     }
+
+    void PlayClickSound()
+    {
+        if (clickAudio != null)
+            AudioManager.Instance?.PlaySound2D(clickAudio, 1f, true); // true to ignore pause
+    }
+
+
 
     public void PauseGame()
     {

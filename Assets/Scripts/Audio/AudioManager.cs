@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays a single 2D sound.
     /// </summary>
-    public void PlaySound2D(AudioClip clip, float volume = 1f)
+    public void PlaySound2D(AudioClip clip, float volume = 1f, bool ignorePause = false)
     {
         if (clip == null) return;
 
@@ -30,11 +30,13 @@ public class AudioManager : MonoBehaviour
         AudioSource source = temp.AddComponent<AudioSource>();
         source.clip = clip;
         source.outputAudioMixerGroup = mixerGroup;
-        source.volume = (volume >= 0) ? volume : defaultVolume;
+        source.volume = volume;
+        source.ignoreListenerPause = ignorePause; // <- this line is key
         source.Play();
 
         Destroy(temp, clip.length);
     }
+
 
     /// <summary>
     /// Plays a random 2D sound from a given array.
