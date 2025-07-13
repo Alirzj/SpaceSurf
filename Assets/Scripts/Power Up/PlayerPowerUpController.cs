@@ -155,25 +155,45 @@ public class PlayerPowerUpController : MonoBehaviour
 
     private IEnumerator PowerUpSequence(PowerUp.PowerUpType type, float duration)
     {
-        // Coming in animation
+        // Coming animation
         yield return StartCoroutine(PlayComingAnimation(type));
 
-        // Activate powerup effect
+        // Activate effect
         ActivatePowerUpEffect(type);
 
-        // Idle animation and effect duration
+        // Play idle
         PlayIdleAnimation(type);
+
+        // Wait until Idle animation state actually starts
+        yield return StartCoroutine(WaitForIdleAnimation(type));
+
+        // THEN wait for duration
         yield return new WaitForSeconds(duration);
 
         // Leaving animation
         yield return StartCoroutine(PlayLeavingAnimation(type));
 
-        // Deactivate powerup effect
+        // Deactivate
         DeactivatePowerUpEffect(type);
 
-        // Remove from active dictionary
         activePowerUps.Remove(type);
     }
+
+    private IEnumerator WaitForIdleAnimation(PowerUp.PowerUpType type)
+    {
+        GameObject powerupInstance = GetActivePowerUpInstance(type);
+        Animator animator = powerupInstance?.GetComponent<Animator>();
+
+        if (animator == null)
+            yield break;
+
+        // Wait until the "Idle" animation is playing
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            yield return null; // wait a frame
+        }
+    }
+
 
     private IEnumerator PlayComingAnimation(PowerUp.PowerUpType type)
     {
@@ -197,7 +217,6 @@ public class PlayerPowerUpController : MonoBehaviour
             animator.Play("Idle");
         }
     }
-
     private IEnumerator PlayLeavingAnimation(PowerUp.PowerUpType type)
     {
         GameObject powerupInstance = GetActivePowerUpInstance(type);
@@ -206,7 +225,16 @@ public class PlayerPowerUpController : MonoBehaviour
         if (animator != null)
         {
             animator.Play("Leaving");
-            yield return new WaitForSeconds(GetAnimationLength(animator, "Leaving"));
+
+            // Wait for the animation to actually start
+            yield return null;
+
+            // Wait until the animation is no longer playing
+            while (animator.GetCurrentAnimatorStateInfo(0).IsName("Leaving") &&
+                   animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            {
+                yield return null;
+            }
         }
 
         // Destroy the powerup instance

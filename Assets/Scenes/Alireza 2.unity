@@ -321,6 +321,8 @@ MonoBehaviour:
   targetTimeScale: 0
   speedIncreaseAmount: 0.2
   durationIncreaseAmount: 2
+  ResumeAudio: {fileID: 0}
+  UpgradeAudio: {fileID: 0}
   upgradeDefinitions:
   - upgradePrefab: {fileID: 7617027284308363243, guid: 690ec67bb152b1244b0c155acbfabc74, type: 3}
     upgradeType: 1
@@ -1406,6 +1408,7 @@ MonoBehaviour:
   - {fileID: 171471093}
   - {fileID: 1365621238}
   - {fileID: 185392509}
+  collectableSpawnPoints: []
   initialDelay: 3
   minObstacleDelay: 2
   maxObstacleDelay: 4
@@ -6857,7 +6860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1364831463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7138,6 +7141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414ab3bba49846b46b84f481a0523785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudio: {fileID: 0}
   pauseMenuPanel: {fileID: 1106666966}
   pauseButton: {fileID: 650257154}
   resumeButton: {fileID: 1685995707}
@@ -7145,6 +7149,8 @@ MonoBehaviour:
   settingsButton: {fileID: 1462908211}
   quitButton: {fileID: 163968373}
   settingsPanel: {fileID: 1316711748}
+  GreyBG: {fileID: 0}
+  GreyBG2: {fileID: 0}
   muteButton: {fileID: 93118310}
   gyroButton: {fileID: 1861085449}
   arrowButton: {fileID: 890025455}
