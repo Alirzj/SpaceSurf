@@ -292,7 +292,7 @@ public class PlayerPowerUpController : MonoBehaviour
         }
     }
 
-    private void DeactivatePowerUpEffect(PowerUp.PowerUpType type)
+    public void DeactivatePowerUpEffect(PowerUp.PowerUpType type)
     {
         switch (type)
         {
